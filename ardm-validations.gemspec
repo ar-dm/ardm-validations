@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.require_paths    = ["lib"]
   gem.rubygems_version = "1.8.11"
 
-  gem.add_runtime_dependency 'ardm-core', '~> 1.2'
+  gem.add_runtime_dependency 'ardm-core', '~> 1.3'
 
   gem.add_development_dependency 'ardm-types', '~> 1.2'
   gem.add_development_dependency 'rake',       '~> 0.9'
