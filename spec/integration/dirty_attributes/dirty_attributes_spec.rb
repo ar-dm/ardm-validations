@@ -8,6 +8,6 @@ describe 'DataMapper::Validations::Fixtures::LlamaSpaceship' do
   it "validates even non dirty attributes" do
     spaceship = DataMapper::Validations::Fixtures::LlamaSpaceship.create(:type => "custom", :color => "pink")
     spaceship.type = "standard"
-    spaceship.should_not be_valid
+    expect(spaceship).not_to be_valid
   end
 end

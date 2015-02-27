@@ -55,7 +55,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballPlayer' do
     end
 
     it "is should not change the value" do
-      @model.height.should == @height
+      expect(@model.height).to eq(@height)
     end
 
     include_examples "invalid model"
@@ -68,7 +68,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballPlayer' do
     end
 
     it "is should not change the value" do
-      @model.height.should == @height
+      expect(@model.height).to eq(@height)
     end
 
     include_examples "invalid model"
@@ -84,7 +84,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballPlayer' do
     include_examples "invalid model"
 
     it "has a meaningful error message" do
-      @model.errors.on(:height).should == [ 'Height must be a number' ]
+      expect(@model.errors.on(:height)).to eq([ 'Height must be a number' ])
     end
   end
 end

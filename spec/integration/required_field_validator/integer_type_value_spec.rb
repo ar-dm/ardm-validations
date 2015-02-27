@@ -29,7 +29,7 @@ describe 'required_field_validator/integer_type_value_spec' do
 
     before do
       @operation = HgCommit.new(:local_repo_revision_num => 90, :name => "ci")
-      @operation.should be_valid
+      expect(@operation).to be_valid
     end
 
     describe "with local revision number = 0" do
@@ -39,7 +39,7 @@ describe 'required_field_validator/integer_type_value_spec' do
 
       it "IS valid" do
         # yes, presence validator does not care
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
 
@@ -51,7 +51,7 @@ describe 'required_field_validator/integer_type_value_spec' do
       end
 
       it "IS valid" do
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
 
@@ -62,7 +62,7 @@ describe 'required_field_validator/integer_type_value_spec' do
       end
 
       it "IS valid" do
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
 
@@ -74,7 +74,7 @@ describe 'required_field_validator/integer_type_value_spec' do
       end
 
       it "IS valid" do
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
 
@@ -87,11 +87,11 @@ describe 'required_field_validator/integer_type_value_spec' do
       it "is NOT valid" do
         # nil = missing for integer value
         # and HgCommit only has default validation context
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
 
         # sanity check
         @operation.local_repo_revision_num = 100
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
   end

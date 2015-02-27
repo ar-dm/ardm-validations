@@ -3,7 +3,7 @@ require 'integration/length_validator/spec_helper'
 
 RSpec.shared_examples_for "entity with a name shorter than 2 characters" do
   it "has a meaninful error message with length restrictions mentioned" do
-    @model.errors.on(:name).should == [ 'Name must be at least 2 characters long' ]
+    expect(@model.errors.on(:name)).to eq([ 'Name must be at least 2 characters long' ])
   end
 end
 

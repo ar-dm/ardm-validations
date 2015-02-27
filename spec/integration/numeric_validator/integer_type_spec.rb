@@ -14,7 +14,7 @@ describe 'City' do
     end
 
     it "is valid" do
-      @city.should be_valid
+      expect(@city).to be_valid
     end
   end
 
@@ -25,7 +25,7 @@ describe 'City' do
     end
 
     it "is valid" do
-      @city.should be_valid
+      expect(@city).to be_valid
     end
   end
 
@@ -36,7 +36,7 @@ describe 'City' do
     end
 
     it "is valid" do
-      @city.should be_valid
+      expect(@city).to be_valid
     end
   end
 
@@ -47,7 +47,7 @@ describe 'City' do
     end
 
     it "is valid" do
-      @city.should be_valid
+      expect(@city).to be_valid
     end
   end
 
@@ -60,11 +60,11 @@ describe 'City' do
     end
 
     it "is not altered" do
-      @city.founded_in.should be(@string)
+      expect(@city.founded_in).to be(@string)
     end
 
     it "IS NOT valid" do
-      @city.should_not be_valid
+      expect(@city).not_to be_valid
     end
   end
 
@@ -75,12 +75,12 @@ describe 'City' do
     end
 
     it "is NOT valid" do
-      @city.should_not be_valid
+      expect(@city).not_to be_valid
     end
 
     it "has a meaningful error message on for the property" do
       @city.valid?
-      @city.errors.on(:founded_in).should == [ 'Foundation year must be an integer' ]
+      expect(@city.errors.on(:founded_in)).to eq([ 'Foundation year must be an integer' ])
     end
   end
 end

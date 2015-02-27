@@ -10,7 +10,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     @model = DataMapper::Validations::Fixtures::BetaTesterAccount.new(:user_agreement    => true,
                                                                    :newsletter_signup => nil,
                                                                    :privacy_agreement => "accept")
-    @model.should be_valid
+    expect(@model).to be_valid
   end
 
   describe "with a missing newsletter signup field" do
@@ -19,7 +19,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is perfectly valid" do
-      @model.should be_valid
+      expect(@model).to be_valid
     end
   end
 
@@ -29,7 +29,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is NOT valid" do
-      @model.should_not be_valid
+      expect(@model).not_to be_valid
     end
   end
 
@@ -39,7 +39,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is NOT valid" do
-      @model.should_not be_valid
+      expect(@model).not_to be_valid
     end
   end
 
@@ -49,7 +49,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is NOT valid" do
-      @model.should_not be_valid
+      expect(@model).not_to be_valid
     end
   end
 
@@ -59,7 +59,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is valid" do
-      @model.should be_valid
+      expect(@model).to be_valid
     end
   end
 
@@ -69,7 +69,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is valid" do
-      @model.should be_valid
+      expect(@model).to be_valid
     end
   end
 
@@ -79,7 +79,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is valid" do
-      @model.should be_valid
+      expect(@model).to be_valid
     end
   end
 
@@ -89,7 +89,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is valid" do
-      @model.should be_valid
+      expect(@model).to be_valid
     end
   end
 
@@ -99,7 +99,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is valid" do
-      @model.should be_valid
+      expect(@model).to be_valid
     end
   end
 
@@ -109,7 +109,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is NOT valid" do
-      @model.should_not be_valid
+      expect(@model).not_to be_valid
     end
   end
 
@@ -119,7 +119,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is NOT valid" do
-      @model.should_not be_valid
+      expect(@model).not_to be_valid
     end
   end
 
@@ -129,7 +129,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is NOT valid" do
-      @model.should_not be_valid
+      expect(@model).not_to be_valid
     end
   end
 
@@ -139,7 +139,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is NOT valid" do
-      @model.should_not be_valid
+      expect(@model).not_to be_valid
     end
   end
 
@@ -149,7 +149,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is NOT valid" do
-      @model.should_not be_valid
+      expect(@model).not_to be_valid
     end
   end
 
@@ -159,7 +159,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is NOT valid" do
-      @model.should_not be_valid
+      expect(@model).not_to be_valid
     end
   end
 
@@ -169,7 +169,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is valid" do
-      @model.should be_valid
+      expect(@model).to be_valid
     end
   end
 
@@ -179,7 +179,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
     end
 
     it "is valid" do
-      @model.should be_valid
+      expect(@model).to be_valid
     end
   end
 
@@ -190,7 +190,7 @@ describe 'DataMapper::Validations::Fixtures::BetaTesterAccount' do
 
     it "is NOT valid" do
       # greed is invalid? can't be
-      @model.should_not be_valid
+      expect(@model).not_to be_valid
     end
   end
 end

@@ -4,13 +4,13 @@ require 'spec_helper'
 shared_examples_for 'a validation error reader' do
   context 'and that property has no associated errors' do
     it 'should return an empty array' do
-      @errors[@property].should == []
+      expect(@errors[@property]).to eq([])
     end
   end
   context 'and that property has associated error(s)' do
     it 'should return a non empty array' do
       @errors.add(@property.to_sym, 'invalid')
-      @errors[@property].should_not be_empty
+      expect(@errors[@property]).not_to be_empty
     end
   end
 end

@@ -14,7 +14,7 @@ describe 'DataMapper::Resource' do
       end
 
       it 'should return true' do
-        @response.should be(true)
+        expect(@response).to be(true)
       end
     end
 
@@ -24,11 +24,11 @@ describe 'DataMapper::Resource' do
       end
 
       it 'should return false' do
-        @response.should be(false)
+        expect(@response).to be(false)
       end
 
       it 'should set errors' do
-        @resource.errors.to_a.should == [ [ 'Code must be at most 10 characters long' ] ]
+        expect(@resource.errors.to_a).to eq([ [ 'Code must be at most 10 characters long' ] ])
       end
     end
 
@@ -48,7 +48,7 @@ describe 'DataMapper::Resource' do
         }
 
         # create a record that will be a dupe when User#update is executed below
-        DataMapper::Validations::Fixtures::User.create(attributes).should be_saved
+        expect(DataMapper::Validations::Fixtures::User.create(attributes)).to be_saved
 
         @resource = DataMapper::Validations::Fixtures::User.create(attributes.merge(:user_name => 'other'))
 
@@ -56,11 +56,11 @@ describe 'DataMapper::Resource' do
       end
 
       it 'should return false' do
-        @response.should be(false)
+        expect(@response).to be(false)
       end
 
       it 'should set errors' do
-        @resource.errors.to_a.should == [ [ 'User name is already taken' ] ]
+        expect(@resource.errors.to_a).to eq([ [ 'User name is already taken' ] ])
       end
     end
   end
@@ -73,7 +73,7 @@ describe 'DataMapper::Resource' do
 
     describe 'on a new resource' do
       it 'should call valid? once' do
-        @resource.valid_hook_call_count.should == 1
+        expect(@resource.valid_hook_call_count).to eq(1)
       end
     end
 
@@ -85,7 +85,7 @@ describe 'DataMapper::Resource' do
       end
 
       it 'should call valid?' do
-        @resource.valid_hook_call_count.should == 1
+        expect(@resource.valid_hook_call_count).to eq(1)
       end
     end
 
@@ -98,7 +98,7 @@ describe 'DataMapper::Resource' do
       end
 
       it 'should call valid? once' do
-        @resource.valid_hook_call_count.should == 1
+        expect(@resource.valid_hook_call_count).to eq(1)
       end
     end
   end

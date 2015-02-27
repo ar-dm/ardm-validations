@@ -35,7 +35,7 @@ describe 'DataMapper::Validations::Fixtures::LerneanHydra' do
     include_examples "invalid model"
 
     it "has a meaningful error message" do
-      @model.errors.on(:head_count).should == [ 'Lernean hydra is said to have exactly 9 heads' ]
+      expect(@model.errors.on(:head_count)).to eq([ 'Lernean hydra is said to have exactly 9 heads' ])
     end
   end
 end

@@ -12,15 +12,15 @@ describe 'GitOperation' do
     end
 
     it "is not valid" do
-      @operation.should_not be_valid
+      expect(@operation).not_to be_valid
     end
 
     it "is not valid in default validation context" do
-      @operation.should_not be_valid(:default)
+      expect(@operation).not_to be_valid(:default)
     end
 
     it "points to blank name in the error message" do
-      @operation.errors.on(:name).should == [ 'Name must not be blank' ]
+      expect(@operation.errors.on(:name)).to eq([ 'Name must not be blank' ])
     end
   end
 end

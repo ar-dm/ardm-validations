@@ -60,13 +60,13 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
     if (RUBY_VERSION == '1.9.2' && RUBY_ENGINE == 'jruby') || RUBY_VERSION == '1.9.3'
       # Not supported on jruby 1.9 or 1.9.3 yet - see formats/email.rb
       it 'should not raise an error' do
-        lambda { @model.valid? }.should_not raise_error
+        expect { @model.valid? }.not_to raise_error
       end
     else
       # Unicode emails not supported on MRI18
       unless !defined?(RUBY_ENGINE) && RUBY_VERSION == '1.8.7'
         it 'should behave like valid model' do
-          @model.should be_valid
+          expect(@model).to be_valid
         end
       end
     end
@@ -88,19 +88,19 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
            ]
 
     bol = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.except(:url))
-    bol.should_not be_valid
-    bol.errors.on(:url).should == [ 'Url has an invalid format' ]
+    expect(bol).not_to be_valid
+    expect(bol.errors.on(:url)).to eq([ 'Url has an invalid format' ])
 
     bad.map do |e|
       bol.url = e
       bol.valid?
-      bol.errors.on(:url).should == [ 'Url has an invalid format' ]
+      expect(bol.errors.on(:url)).to eq([ 'Url has an invalid format' ])
     end
 
     good.map do |e|
       bol.url = e
       bol.valid?
-      bol.errors.on(:url).should be_nil
+      expect(bol.errors.on(:url)).to be_nil
     end
 
   end
@@ -108,7 +108,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
   describe 'with a regexp' do
     before do
       @bol = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes)
-      @bol.should be_valid
+      expect(@bol).to be_valid
     end
 
     describe 'if matched' do
@@ -117,7 +117,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       end
 
       it 'should validate' do
-        @bol.should be_valid
+        expect(@bol).to be_valid
       end
     end
 
@@ -127,12 +127,12 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       end
 
       it 'should not validate' do
-        @bol.should_not be_valid
+        expect(@bol).not_to be_valid
       end
 
       it 'should set an error message' do
         @bol.valid?
-        @bol.errors.on(:username).should == [ 'Username must have at least one letter' ]
+        expect(@bol.errors.on(:username)).to eq([ 'Username must have at least one letter' ])
       end
     end
   end

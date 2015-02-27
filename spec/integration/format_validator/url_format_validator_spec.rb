@@ -29,7 +29,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       include_examples "invalid model"
 
       it "has a meaningful error message" do
-        @model.errors.on(:url).should == [ 'Url has an invalid format' ]
+        expect(@model.errors.on(:url)).to eq([ 'Url has an invalid format' ])
       end
     end
   end
@@ -44,7 +44,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       include_examples "invalid model"
 
       it "has a meaningful error message" do
-        @model.errors.on(:bank_url).should == [ 'Bank url has an invalid format' ]
+        expect(@model.errors.on(:bank_url)).to eq([ 'Bank url has an invalid format' ])
       end
 
     end

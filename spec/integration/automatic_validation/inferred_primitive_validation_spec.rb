@@ -6,7 +6,7 @@ describe 'SailBoat' do
     SailBoat.auto_migrate!
 
     @model = SailBoat.new(:id => 1)
-    @model.should be_valid_for_primitive_test
+    expect(@model).to be_valid_for_primitive_test
   end
 
   describe "with invlid value assigned to primitive column" do
@@ -15,8 +15,8 @@ describe 'SailBoat' do
     end
 
     it "is invalid" do
-      @model.should_not be_valid_for_primitive_test
-      @model.errors.on(:build_date).should == [ 'Build date must be of type Date' ]
+      expect(@model).not_to be_valid_for_primitive_test
+      expect(@model.errors.on(:build_date)).to eq([ 'Build date must be of type Date' ])
     end
   end
 end

@@ -8,7 +8,7 @@ describe 'uniqueness_validator/uniqueness_validator_spec' do
     before :all do
       DataMapper::Validations::Fixtures::Department.destroy!
 
-      DataMapper::Validations::Fixtures::Department.create(:name => "HR").should be_saved
+      expect(DataMapper::Validations::Fixtures::Department.create(:name => "HR")).to be_saved
     end
 
     describe "with unique name" do
@@ -54,13 +54,13 @@ describe 'uniqueness_validator/uniqueness_validator_spec' do
 
       it "has a meaningful error message" do
         @model.valid?
-        @model.errors.on(:domain).should == [ 'Domain is already taken' ]
+        expect(@model.errors.on(:domain)).to eq([ 'Domain is already taken' ])
       end
     end
 
     it "shouldn't fail on itself when checking for records with identical fields" do
       @model.name = "Steve Job's Pony Express"
-      @model.should be_valid
+      expect(@model).to be_valid
     end
   end
 
@@ -75,9 +75,9 @@ describe 'uniqueness_validator/uniqueness_validator_spec' do
         @dept         = DataMapper::Validations::Fixtures::Department.create(:name => 'accounting')
         @user         = DataMapper::Validations::Fixtures::User.create(:organisation => @organization, :user_name => 'guy', :department => @dept)
 
-        @organization.should be_saved
-        @dept.should be_saved
-        @user.should be_saved
+        expect(@organization).to be_saved
+        expect(@dept).to be_saved
+        expect(@user).to be_saved
       end
     end
 
@@ -87,12 +87,12 @@ describe 'uniqueness_validator/uniqueness_validator_spec' do
       end
 
       it "is not valid for signing up" do
-        @model.should_not be_valid_for_signing_up_for_organization_account
+        expect(@model).not_to be_valid_for_signing_up_for_organization_account
       end
 
       it "has a meaningful error message" do
         @model.valid?(:signing_up_for_organization_account)
-        @model.errors.on(:user_name).should == [ 'User name is already taken' ]
+        expect(@model.errors.on(:user_name)).to eq([ 'User name is already taken' ])
       end
     end
 
@@ -103,12 +103,12 @@ describe 'uniqueness_validator/uniqueness_validator_spec' do
       end
 
       it "is not valid for setting up the account" do
-        @model.should_not be_valid_for_signing_up_for_department_account
+        expect(@model).not_to be_valid_for_signing_up_for_department_account
       end
 
       it "has a meaningful error message" do
         @model.valid?(:signing_up_for_department_account)
-        @model.errors.on(:user_name).should == [ 'User name is already taken' ]
+        expect(@model.errors.on(:user_name)).to eq([ 'User name is already taken' ])
       end
     end
   end

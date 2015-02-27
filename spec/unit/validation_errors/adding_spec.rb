@@ -12,11 +12,11 @@ describe 'DataMapper::Validations::ValidationErrors' do
     end
 
     it "is no longer empty" do
-      @model.should_not be_empty
+      expect(@model).not_to be_empty
     end
 
     it "adds error message to list of errors for given property name" do
-      @model.on(:property).should == ["can't be valid, no way"]
+      expect(@model.on(:property)).to eq(["can't be valid, no way"])
     end
   end
 
@@ -28,11 +28,11 @@ describe 'DataMapper::Validations::ValidationErrors' do
     end
 
     it "is no longer empty" do
-      @model.should_not be_empty
+      expect(@model).not_to be_empty
     end
 
     it "appends error message to list of errors for given property name" do
-      @model.on(:property).should == ["can't be valid, no way", "something else is wrong"]
+      expect(@model.on(:property)).to eq(["can't be valid, no way", "something else is wrong"])
     end
   end
 
@@ -44,11 +44,11 @@ describe 'DataMapper::Validations::ValidationErrors' do
     end
 
     it "is no longer empty" do
-      @model.should_not be_empty
+      expect(@model).not_to be_empty
     end
 
     it "DOES NOT allow duplication" do
-      @model.on(:property).should == ["can't be valid, no way"]
+      expect(@model.on(:property)).to eq(["can't be valid, no way"])
     end
   end
 end

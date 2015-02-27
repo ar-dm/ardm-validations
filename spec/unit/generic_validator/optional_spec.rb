@@ -12,8 +12,8 @@ describe 'DataMapper::Validations::GenericValidator', '#optional?' do
       )
     end
 
-    it { subject.optional?("" ).should be }
-    it { subject.optional?(nil).should be }
+    it { expect(subject.optional?("" )).to be }
+    it { expect(subject.optional?(nil)).to be }
   end
 
   describe 'allowing nil' do
@@ -23,8 +23,8 @@ describe 'DataMapper::Validations::GenericValidator', '#optional?' do
       )
     end
 
-    it { subject.optional?("" ).should_not be }
-    it { subject.optional?(nil).should be }
+    it { expect(subject.optional?("" )).not_to be }
+    it { expect(subject.optional?(nil)).to be }
   end
 
   describe 'allowing blank, but now allowing nil' do
@@ -35,8 +35,8 @@ describe 'DataMapper::Validations::GenericValidator', '#optional?' do
       )
     end
 
-    it { subject.optional?("" ).should be }
-    it { subject.optional?(nil).should_not be }
+    it { expect(subject.optional?("" )).to be }
+    it { expect(subject.optional?(nil)).not_to be }
   end
 
   describe 'allowing nil, but now allowing blank' do
@@ -47,8 +47,8 @@ describe 'DataMapper::Validations::GenericValidator', '#optional?' do
       )
     end
 
-    it { subject.optional?("" ).should_not be }
-    it { subject.optional?(nil).should be }
+    it { expect(subject.optional?("" )).not_to be }
+    it { expect(subject.optional?(nil)).to be }
   end
 
 end

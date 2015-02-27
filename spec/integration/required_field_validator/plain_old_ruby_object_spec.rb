@@ -19,16 +19,16 @@ describe 'required_field_validator/plain_old_ruby_object_spec' do
     end
 
     it "should fail validation with empty, nil, or blank fields" do
-      @pc.should_not be_valid
-      @pc.errors.on(:empty).should    == [ 'Empty must not be blank' ]
-      @pc.errors.on(:nil).should      == [ 'Nil must not be blank' ]
-      @pc.errors.on(:accessor).should == [ 'Accessor must not be blank' ]
+      expect(@pc).not_to be_valid
+      expect(@pc.errors.on(:empty)).to    eq([ 'Empty must not be blank' ])
+      expect(@pc.errors.on(:nil)).to      eq([ 'Nil must not be blank' ])
+      expect(@pc.errors.on(:accessor)).to eq([ 'Accessor must not be blank' ])
     end
 
     it "giving accessor a value should remove validation error" do
       @pc.accessor = "full"
       @pc.valid?
-      @pc.errors.on(:accessor).should be_nil
+      expect(@pc.errors.on(:accessor)).to be_nil
     end
   end
 

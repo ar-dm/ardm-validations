@@ -31,7 +31,7 @@ describe 'required_field_validator/datetime_type_value_spec' do
 
     before do
       @operation = ScheduledOperation.new(:at => DateTime.civil(2008, 06, 07, 15, 00, 00))
-      @operation.should be_valid
+      expect(@operation).to be_valid
     end
 
 
@@ -43,11 +43,11 @@ describe 'required_field_validator/datetime_type_value_spec' do
       it "is NOT valid" do
         # nil = missing for Date value
         # and ScheduledOperation only has default validation context
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
 
         # sanity check
         @operation.at = Date.new(2008, 12, 31)
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
 
@@ -59,7 +59,7 @@ describe 'required_field_validator/datetime_type_value_spec' do
 
       it "IS valid" do
         # yes, presence validator does not care
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
 
@@ -72,7 +72,7 @@ describe 'required_field_validator/datetime_type_value_spec' do
 
       it "IS valid" do
         # yes, presence validator does not care
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
 
@@ -84,7 +84,7 @@ describe 'required_field_validator/datetime_type_value_spec' do
       end
 
       it "IS valid" do
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
 
@@ -95,7 +95,7 @@ describe 'required_field_validator/datetime_type_value_spec' do
       end
 
       it "IS valid" do
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
 
@@ -107,7 +107,7 @@ describe 'required_field_validator/datetime_type_value_spec' do
       end
 
       it "IS valid" do
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
 
@@ -119,7 +119,7 @@ describe 'required_field_validator/datetime_type_value_spec' do
       end
 
       it "IS valid" do
-        @operation.should be_valid
+        expect(@operation).to be_valid
       end
     end
   end

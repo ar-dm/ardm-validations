@@ -60,7 +60,7 @@ describe "A model with a required Boolean property" do
     include_examples "invalid model"
 
     it "has a meaningful error message" do
-      @model.errors.on(:bool).should == [ 'Bool must not be nil' ]
+      expect(@model.errors.on(:bool)).to eq([ 'Bool must not be nil' ])
     end
   end
 end
@@ -94,7 +94,7 @@ describe "A model with a required paranoid Boolean property" do
     include_examples "invalid model"
 
     it "has a meaningful error message" do
-      @model.errors.on(:bool).should == [ 'Bool must not be nil' ]
+      expect(@model.errors.on(:bool)).to eq([ 'Bool must not be nil' ])
     end
   end
 end

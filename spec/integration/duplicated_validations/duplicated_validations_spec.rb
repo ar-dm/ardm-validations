@@ -18,7 +18,7 @@ describe 'DataMapper::Validations::Fixtures::Page' do
     include_examples "invalid model"
 
     it "does not have duplicated error messages" do
-      @model.errors.on(:body).should == ["Body must not be blank"]
+      expect(@model.errors.on(:body)).to eq(["Body must not be blank"])
     end
   end
 end

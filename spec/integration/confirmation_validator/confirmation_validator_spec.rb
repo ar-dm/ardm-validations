@@ -3,14 +3,14 @@ require 'integration/confirmation_validator/spec_helper'
 
 RSpec.shared_examples_for "reservation with mismatched person name" do
   it "has meaningful error message" do
-    @model.errors.on(:person_name).should == [ 'Person name does not match the confirmation' ]
+    expect(@model.errors.on(:person_name)).to eq([ 'Person name does not match the confirmation' ])
   end
 end
 
 RSpec.shared_examples_for "reservation with mismatched seats number" do
   it "has meaningful error message" do
     # Proc gets expanded here
-    @model.errors.on(:number_of_seats).should == [ 'Reservation requires confirmation for number_of_seats' ]
+    expect(@model.errors.on(:number_of_seats)).to eq([ 'Reservation requires confirmation for number_of_seats' ])
   end
 end
 
@@ -23,7 +23,7 @@ describe 'DataMapper::Validations::Fixtures::Reservation' do
                                                              :person_name_confirmation     => "Tyler Durden",
                                                              :number_of_seats              => 2,
                                                              :seats_confirmation           => 2)
-    @model.should be_valid
+    expect(@model).to be_valid
   end
 
   describe "with matching person name and confirmation" do

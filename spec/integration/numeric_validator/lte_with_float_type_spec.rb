@@ -31,7 +31,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballCourt' do
     include_examples "invalid model"
 
     it "has a meaningful error message" do
-      @model.errors.on(:length).should == [ 'Length must be less than or equal to 15.24' ]
+      expect(@model.errors.on(:length)).to eq([ 'Length must be less than or equal to 15.24' ])
     end
   end
 end

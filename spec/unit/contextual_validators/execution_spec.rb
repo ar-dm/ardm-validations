@@ -19,14 +19,14 @@ describe 'DataMapper::Validations::ContextualValidators' do
     describe "when target satisfies all validators" do
       before do
         @target = DataMapper::Validations::Fixtures::PieceOfSoftware.new(:name => 'gcc', :operating_system => "Mac OS X")
-        @validator_one.call(@target).should be(true)
-        @validator_two.call(@target).should be(true)
+        expect(@validator_one.call(@target)).to be(true)
+        expect(@validator_two.call(@target)).to be(true)
 
         @result = @validators.execute(:default, @target)
       end
 
       it "returns true" do
-        @result.should be(true)
+        expect(@result).to be(true)
       end
     end
 
@@ -34,14 +34,14 @@ describe 'DataMapper::Validations::ContextualValidators' do
     describe "when target does not satisfy all validators" do
       before do
         @target = DataMapper::Validations::Fixtures::PieceOfSoftware.new(:name => 'Skitch', :operating_system => "Haiku")
-        @validator_one.call(@target).should be(true)
-        @validator_two.call(@target).should be(false)
+        expect(@validator_one.call(@target)).to be(true)
+        expect(@validator_two.call(@target)).to be(false)
 
         @result = @validators.execute(:default, @target)
       end
 
       it "returns true" do
-        @result.should be(false)
+        expect(@result).to be(false)
       end
     end
   end

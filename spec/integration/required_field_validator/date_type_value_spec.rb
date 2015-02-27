@@ -31,7 +31,7 @@ describe 'required_field_validator/date_type_value_spec' do
 
     before do
       @ny09 = Holiday.new(:on => Date.new(2008, 12, 31))
-      @ny09.should be_valid
+      expect(@ny09).to be_valid
     end
 
 
@@ -43,11 +43,11 @@ describe 'required_field_validator/date_type_value_spec' do
       it "is NOT valid" do
         # nil = missing for Date value
         # and Holiday only has default validation context
-        @ny09.should_not be_valid
+        expect(@ny09).not_to be_valid
 
         # sanity check
         @ny09.on = Date.new(2008, 12, 31)
-        @ny09.should be_valid
+        expect(@ny09).to be_valid
       end
     end
 
@@ -59,7 +59,7 @@ describe 'required_field_validator/date_type_value_spec' do
 
       it "IS valid" do
         # yes, presence validator does not care
-        @ny09.should be_valid
+        expect(@ny09).to be_valid
       end
     end
 
@@ -72,7 +72,7 @@ describe 'required_field_validator/date_type_value_spec' do
 
       it "IS valid" do
         # yes, presence validator does not care
-        @ny09.should be_valid
+        expect(@ny09).to be_valid
       end
     end
 
@@ -84,7 +84,7 @@ describe 'required_field_validator/date_type_value_spec' do
       end
 
       it "IS valid" do
-        @ny09.should be_valid
+        expect(@ny09).to be_valid
       end
     end
 
@@ -95,7 +95,7 @@ describe 'required_field_validator/date_type_value_spec' do
       end
 
       it "IS valid" do
-        @ny09.should be_valid
+        expect(@ny09).to be_valid
       end
     end
 
@@ -107,7 +107,7 @@ describe 'required_field_validator/date_type_value_spec' do
       end
 
       it "IS valid" do
-        @ny09.should be_valid
+        expect(@ny09).to be_valid
       end
     end
 
@@ -119,7 +119,7 @@ describe 'required_field_validator/date_type_value_spec' do
       end
 
       it "IS valid" do
-        @ny09.should be_valid
+        expect(@ny09).to be_valid
       end
     end
   end

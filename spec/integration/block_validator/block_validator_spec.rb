@@ -4,7 +4,7 @@ require 'integration/block_validator/spec_helper'
 describe 'DataMapper::Validations::Fixtures::G3Concert' do
   before :all do
     @model = DataMapper::Validations::Fixtures::G3Concert.new(:year => 2004, :participants => "Joe Satriani, Steve Vai, Yngwie Malmsteen", :city => "Denver")
-    @model.should be_valid
+    expect(@model).to be_valid
   end
 
   describe "some non existing year/participants/city combination" do
@@ -15,7 +15,7 @@ describe 'DataMapper::Validations::Fixtures::G3Concert' do
     include_examples "invalid model"
 
     it "uses error messages returned by the validation block" do
-      @model.errors.on(:participants).should == [ 'this G3 is probably yet to take place' ]
+      expect(@model.errors.on(:participants)).to eq([ 'this G3 is probably yet to take place' ])
     end
   end
 

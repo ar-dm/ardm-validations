@@ -7,12 +7,12 @@ describe 'DataMapper::Validations::Fixtures::Product' do
 
     parent_model = DataMapper::Validations::Fixtures::ProductCompany
     @parent = parent_model.new(:title => "Apple", :flagship_product => "Macintosh")
-    @parent.should be_valid
-    @parent.save.should be_true
+    expect(@parent).to be_valid
+    expect(@parent.save).to be_truthy
 
     model_model = DataMapper::Validations::Fixtures::Product
     @model = model_model.new(:name => "MacBook Pro", :company => @parent)
-    @model.should be_valid
+    expect(@model).to be_valid
   end
 
   describe "without company" do
@@ -23,7 +23,7 @@ describe 'DataMapper::Validations::Fixtures::Product' do
     include_examples "invalid model"
 
     it "has a meaningful error message" do
-      @model.errors.on(:company).should == [ 'Company must not be blank' ]
+      expect(@model.errors.on(:company)).to eq([ 'Company must not be blank' ])
     end
   end
 end

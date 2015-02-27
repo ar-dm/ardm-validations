@@ -31,7 +31,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballCourt' do
     include_examples "invalid model"
 
     it "has a meaningful error message" do
-      @model.errors.on(:three_point_line_distance).should == [ 'Three point line distance must be greater than 6.7' ]
+      expect(@model.errors.on(:three_point_line_distance)).to eq([ 'Three point line distance must be greater than 6.7' ])
     end
   end
 end

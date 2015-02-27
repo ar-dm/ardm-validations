@@ -6,7 +6,7 @@ describe 'SailBoat' do
     SailBoat.auto_migrate!
 
     @model      = SailBoat.new(:id => 1)
-    @model.should be_valid_for_length_test_1
+    expect(@model).to be_valid_for_length_test_1
   end
 
 
@@ -16,7 +16,7 @@ describe 'SailBoat' do
     end
 
     it "is valid" do
-      @model.should be_valid_for_nil_test
+      expect(@model).to be_valid_for_nil_test
     end
   end
 
@@ -28,8 +28,8 @@ describe 'SailBoat' do
 
     # validates_length_of is inferred from property's :length option
     it "is invalid" do
-      @model.should_not be_valid_for_length_test_1
-      @model.errors.on(:description).should == [ 'Description must be at most 10 characters long' ]
+      expect(@model).not_to be_valid_for_length_test_1
+      expect(@model.errors.on(:description)).to eq([ 'Description must be at most 10 characters long' ])
     end
   end
 
@@ -49,7 +49,7 @@ describe 'SailBoat' do
     end
 
     it "is valid" do
-      @model.should be_valid_for_length_test_2
+      expect(@model).to be_valid_for_length_test_2
     end
   end
 
@@ -59,7 +59,7 @@ describe 'SailBoat' do
     end
 
     it "is valid" do
-      @model.should be_valid_for_length_test_2
+      expect(@model).to be_valid_for_length_test_2
     end
   end
 
@@ -69,11 +69,11 @@ describe 'SailBoat' do
     end
 
     it "is invalid" do
-      @model.should_not be_valid_for_length_test_2
+      expect(@model).not_to be_valid_for_length_test_2
     end
 
     it "has a meaningful error message" do
-      @model.errors.on(:notes).should  == [ 'Notes must be between 2 and 10 characters long' ]
+      expect(@model.errors.on(:notes)).to  eq([ 'Notes must be between 2 and 10 characters long' ])
     end
   end
 end
@@ -119,7 +119,7 @@ describe 'DataMapper::Validations::Fixtures::SmsMessage' do
     include_examples "invalid model"
 
     it "has a meaningful error message" do
-      @model.errors.on(:body).should == [ 'Body must be between 1 and 500 characters long' ]
+      expect(@model.errors.on(:body)).to eq([ 'Body must be between 1 and 500 characters long' ])
     end
   end
 
@@ -134,9 +134,9 @@ describe 'DataMapper::Validations::Fixtures::SmsMessage' do
 
     it "should raise when trying to set the upper bound of a property length range to Infinity" do
       expected_msg = "Infinity is no valid upper bound for a length range"
-      lambda {
+      expect {
         @model.class.property :body, String, :length => (1..1.0/0)
-      }.should raise_error(ArgumentError, expected_msg)
+      }.to raise_error(ArgumentError, expected_msg)
     end
   end
 end

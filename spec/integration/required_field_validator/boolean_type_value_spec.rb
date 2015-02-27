@@ -34,24 +34,24 @@ describe 'required_field_validator/boolean_type_value_spec' do
       end
 
       it "is valid for committing" do
-        @operation.should be_valid_for_committing
-        @operation.errors.on(:network_connection).should be_nil
+        expect(@operation).to be_valid_for_committing
+        expect(@operation.errors.on(:network_connection)).to be_nil
       end
 
       it "is not valid for pushing" do
-        @operation.should_not be_valid_for_pushing
-        @operation.errors.on(:network_connection).
-          first[:pushing].should == 'though git is advanced, it cannot push without network connectivity'
+        expect(@operation).not_to be_valid_for_pushing
+        expect(@operation.errors.on(:network_connection).
+          first[:pushing]).to eq('though git is advanced, it cannot push without network connectivity')
       end
 
       it "is not valid for pulling" do
-        @operation.should_not be_valid_for_pulling
-        @operation.errors.on(:network_connection).
-          first[:pulling].should == 'you must have network connectivity to pull from others'
+        expect(@operation).not_to be_valid_for_pulling
+        expect(@operation.errors.on(:network_connection).
+          first[:pulling]).to eq('you must have network connectivity to pull from others')
       end
 
       it "is not valid in default context" do
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
       end
     end
 
@@ -61,19 +61,19 @@ describe 'required_field_validator/boolean_type_value_spec' do
       end
 
       it "is valid for committing" do
-        @operation.should be_valid_for_committing
+        expect(@operation).to be_valid_for_committing
       end
 
       it "is valid for pushing" do
-        @operation.should be_valid_for_pushing
+        expect(@operation).to be_valid_for_pushing
       end
 
       it "is valid for pulling" do
-        @operation.should be_valid_for_pulling
+        expect(@operation).to be_valid_for_pulling
       end
 
       it "is not valid in default context" do
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
       end
     end
 
@@ -84,19 +84,19 @@ describe 'required_field_validator/boolean_type_value_spec' do
       end
 
       it "is valid for committing" do
-        @operation.should be_valid_for_committing
+        expect(@operation).to be_valid_for_committing
       end
 
       it "is valid for pushing" do
-        @operation.should be_valid_for_pushing
+        expect(@operation).to be_valid_for_pushing
       end
 
       it "is not valid for pulling" do
-        @operation.should_not be_valid_for_pulling
+        expect(@operation).not_to be_valid_for_pulling
       end
 
       it "is not valid in default context" do
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
       end
     end
 
@@ -106,19 +106,19 @@ describe 'required_field_validator/boolean_type_value_spec' do
       end
 
       it "is valid for committing" do
-        @operation.should be_valid_for_committing
+        expect(@operation).to be_valid_for_committing
       end
 
       it "is valid for pushing" do
-        @operation.should be_valid_for_pushing
+        expect(@operation).to be_valid_for_pushing
       end
 
       it "is valid for pulling" do
-        @operation.should be_valid_for_pulling
+        expect(@operation).to be_valid_for_pulling
       end
 
       it "is not valid in default context" do
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
       end
     end
   end
@@ -145,8 +145,8 @@ describe 'required_field_validator/boolean_type_value_spec' do
       end
 
       it "virtually useless" do
-        @operation.should_not be_valid_for_committing
-        @operation.should_not be_valid_for_log_viewing
+        expect(@operation).not_to be_valid_for_committing
+        expect(@operation).not_to be_valid_for_log_viewing
       end
     end
   end

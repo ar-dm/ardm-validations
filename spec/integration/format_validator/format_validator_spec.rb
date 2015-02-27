@@ -18,7 +18,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
     include_examples 'invalid model'
 
     it "has meaningful error message on invalid field" do
-      @model.errors.on(:doc_no).should == [ 'Doc no has an invalid format' ]
+      expect(@model.errors.on(:doc_no)).to eq([ 'Doc no has an invalid format' ])
     end
   end
 

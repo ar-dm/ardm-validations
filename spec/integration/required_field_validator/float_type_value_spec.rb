@@ -36,7 +36,7 @@ describe 'required_field_validator/float_type_value_spec' do
 
     before do
       @metric = CpuConsumption.new(:percent => 20.0)
-      @metric.should be_valid
+      expect(@metric).to be_valid
     end
 
     describe "with percentage = 0.0" do
@@ -46,7 +46,7 @@ describe 'required_field_validator/float_type_value_spec' do
 
       it "IS valid" do
         # yes, presence validator does not care
-        @metric.should be_valid
+        expect(@metric).to be_valid
       end
     end
 
@@ -59,7 +59,7 @@ describe 'required_field_validator/float_type_value_spec' do
 
       it "IS valid" do
         # yes, presence validator does not care
-        @metric.should be_valid
+        expect(@metric).to be_valid
       end
     end
 
@@ -71,7 +71,7 @@ describe 'required_field_validator/float_type_value_spec' do
       end
 
       it "IS valid" do
-        @metric.should be_valid
+        expect(@metric).to be_valid
       end
     end
 
@@ -82,7 +82,7 @@ describe 'required_field_validator/float_type_value_spec' do
       end
 
       it "IS valid" do
-        @metric.should be_valid
+        expect(@metric).to be_valid
       end
     end
 
@@ -94,7 +94,7 @@ describe 'required_field_validator/float_type_value_spec' do
       end
 
       it "IS valid" do
-        @metric.should be_valid
+        expect(@metric).to be_valid
       end
     end
 
@@ -106,7 +106,7 @@ describe 'required_field_validator/float_type_value_spec' do
       end
 
       it "IS valid" do
-        @metric.should be_valid
+        expect(@metric).to be_valid
       end
     end
 
@@ -119,11 +119,11 @@ describe 'required_field_validator/float_type_value_spec' do
       it "is NOT valid" do
         # nil = missing for float value
         # and CpuConsumption only has default validation context
-        @metric.should_not be_valid
+        expect(@metric).not_to be_valid
 
         # sanity check
         @metric.percent = 100
-        @metric.should be_valid
+        expect(@metric).to be_valid
       end
     end
   end

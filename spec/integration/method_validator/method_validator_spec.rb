@@ -3,42 +3,42 @@ require 'integration/method_validator/spec_helper'
 
 RSpec.shared_examples_for "a good fit for DSLs" do
   it "is a good fit for DSLs" do
-    @model.should be_valid_for_implementing_a_dsl
+    expect(@model).to be_valid_for_implementing_a_dsl
   end
 
   it "is totally fine for DSLs" do
-    @model.ensure_appropriate_for_dsls.should be(true)
+    expect(@model.ensure_appropriate_for_dsls).to be(true)
   end
 end
 
 RSpec.shared_examples_for "a poor candidate for DSLs" do
   it "is a poor candidate for DSLs" do
-    @model.should_not be_valid_for_implementing_a_dsl
+    expect(@model).not_to be_valid_for_implementing_a_dsl
   end
 
   it "is unappropriate for DSLs" do
-    @model.ensure_appropriate_for_dsls.first.should be(false)
+    expect(@model.ensure_appropriate_for_dsls.first).to be(false)
   end
 
   it "has a (more or less) meaningful error message" do
-    @model.errors.on(:ensure_appropriate_for_dsls).should == [ 'may not be so good for domain specific languages' ]
+    expect(@model.errors.on(:ensure_appropriate_for_dsls)).to eq([ 'may not be so good for domain specific languages' ])
   end
 end
 
 
 RSpec.shared_examples_for "a good fit for game engine core" do
   it "is a good fit for game engine core" do
-    @model.should be_valid_for_implementing_a_game_engine_core
+    expect(@model).to be_valid_for_implementing_a_game_engine_core
   end
 
   it "is appropriate for system programming" do
-    @model.ensure_appropriate_for_system_programming.should be(true)
+    expect(@model.ensure_appropriate_for_system_programming).to be(true)
   end
 end
 
 RSpec.shared_examples_for "a poor candidate for game engine core" do
   it "is a poor candidate for game engine core" do
-    @model.should_not be_valid_for_implementing_a_game_engine_core
+    expect(@model).not_to be_valid_for_implementing_a_game_engine_core
   end
 end
 
@@ -46,18 +46,18 @@ end
 
 RSpec.shared_examples_for "a good fit for kernel hacking" do
   it "is a good fit for kernel hacking" do
-    @model.should be_valid_for_hacking_on_the_kernel
+    expect(@model).to be_valid_for_hacking_on_the_kernel
   end
 
   it "is appropriate for system programming" do
-    @model.ensure_appropriate_for_system_programming.should be(true)
+    expect(@model.ensure_appropriate_for_system_programming).to be(true)
   end
 end
 
 
 RSpec.shared_examples_for "a poor candidate for kernel hacking" do
   it "is not a good fit for kernel hacking" do
-    @model.should_not be_valid_for_hacking_on_the_kernel
+    expect(@model).not_to be_valid_for_hacking_on_the_kernel
   end
 end
 
@@ -118,7 +118,7 @@ describe "C++" do
 
   it "is not approved by Linus" do
     @model.valid?(:hacking_on_the_kernel)
-    @model.errors.on(:ensure_approved_by_linus_himself).should_not be_empty
+    expect(@model.errors.on(:ensure_approved_by_linus_himself)).not_to be_empty
   end
 end
 
@@ -146,7 +146,7 @@ describe "Ruby" do
 
   it "has a (more or less) meaningful error message" do
     @model.valid?(:doing_system_programming)
-    @model.errors.on(:ensure_appropriate_for_system_programming).should == [ 'try something that is closer to the metal' ]
+    expect(@model.errors.on(:ensure_appropriate_for_system_programming)).to eq([ 'try something that is closer to the metal' ])
   end
 end
 
@@ -173,7 +173,7 @@ describe "Scala" do
 
   it "has a (more or less) meaningful error message" do
     @model.valid?(:doing_system_programming)
-    @model.errors.on(:ensure_appropriate_for_system_programming).should == [ 'try something that is closer to the metal' ]
+    expect(@model.errors.on(:ensure_appropriate_for_system_programming)).to eq([ 'try something that is closer to the metal' ])
   end
 end
 
@@ -205,7 +205,7 @@ describe "Haskell" do
 
   it "has a (more or less) meaningful error message" do
     @model.valid?(:doing_system_programming)
-    @model.errors.on(:ensure_appropriate_for_system_programming).should == [ 'try something that is closer to the metal' ]
+    expect(@model.errors.on(:ensure_appropriate_for_system_programming)).to eq([ 'try something that is closer to the metal' ])
   end
 end
 
@@ -235,7 +235,7 @@ describe 'DataMapper::Validations::Fixtures::Event' do
     include_examples "invalid model"
 
     it "uses custom error message for property starts_at" do
-      @model.errors.on(:starts_at).should == [ 'Start time cannot be after end time' ]
+      expect(@model.errors.on(:starts_at)).to eq([ 'Start time cannot be after end time' ])
     end
   end
 end

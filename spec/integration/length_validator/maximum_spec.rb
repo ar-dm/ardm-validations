@@ -3,7 +3,7 @@ require 'integration/length_validator/spec_helper'
 
 RSpec.shared_examples_for "barcode with invalid code length" do
   it "has a meaninful error message with length restrictions mentioned" do
-    @model.errors.on(:code).should == [ 'Code must be at most 10 characters long' ]
+    expect(@model.errors.on(:code)).to eq([ 'Code must be at most 10 characters long' ])
   end
 end
 

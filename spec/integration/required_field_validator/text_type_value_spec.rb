@@ -24,24 +24,24 @@ describe 'required_field_validator/text_type_value_spec' do
       it "is NOT valid for committing" do
         # empty string is not considered present for
         # a text value
-        @operation.should_not be_valid_for_committing
+        expect(@operation).not_to be_valid_for_committing
 
         # sanity check since this empty vs blank vs nil
         # thing is a shaky ground
         @operation.message = "RUBY ON RAILS CAN SCALE NOW!!! w00t!!!"
-        @operation.should be_valid_for_committing
+        expect(@operation).to be_valid_for_committing
       end
 
       it "IS valid for pushing" do
-        @operation.should be_valid_for_pushing
+        expect(@operation).to be_valid_for_pushing
       end
 
       it "IS valid for pulling" do
-        @operation.should be_valid_for_pulling
+        expect(@operation).to be_valid_for_pulling
       end
 
       it "is not valid in default context" do
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
       end
     end
   end

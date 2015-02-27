@@ -22,20 +22,20 @@ describe 'required_field_validator/string_type_value_spec' do
       end
 
       it "is valid for committing (because default value jumps in)" do
-        @operation.should be_valid_for_committing
-        @operation.should be_valid(:committing)
+        expect(@operation).to be_valid_for_committing
+        expect(@operation).to be_valid(:committing)
       end
 
       it "is not valid in default context" do
         # context here is :default
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
       end
 
       it "has default value set" do
         # this is more of a sanity check since
         # this sort of functionality clearly needs to be
         # tested in
-        @operation.committer_name.should == "Just another Ruby hacker"
+        expect(@operation.committer_name).to eq("Just another Ruby hacker")
       end
     end
 
@@ -45,20 +45,20 @@ describe 'required_field_validator/string_type_value_spec' do
       end
 
       it "is valid for committing" do
-        @operation.should be_valid_for_committing
-        @operation.should be_valid(:committing)
+        expect(@operation).to be_valid_for_committing
+        expect(@operation).to be_valid(:committing)
       end
 
       it "is not valid in default context" do
-        @operation.should_not be_valid
-        @operation.should_not be_valid(:default)
+        expect(@operation).not_to be_valid
+        expect(@operation).not_to be_valid(:default)
       end
 
       it "has value set" do
         # this is more of a sanity check since
         # this sort of functionality clearly needs to be
         # tested in
-        @operation.committer_name.should == "Core Team Guy"
+        expect(@operation.committer_name).to eq("Core Team Guy")
       end
     end
 
@@ -70,18 +70,18 @@ describe 'required_field_validator/string_type_value_spec' do
       end
 
       it "is valid for committing (because default value jumps in)" do
-        @operation.should be_valid_for_committing
-        @operation.should be_valid(:committing)
+        expect(@operation).to be_valid_for_committing
+        expect(@operation).to be_valid(:committing)
       end
 
       it "is not valid in default context" do
         # context here is :default
-        @operation.should_not be_valid
-        @operation.should_not be_valid(:default)
+        expect(@operation).not_to be_valid
+        expect(@operation).not_to be_valid(:default)
       end
 
       it "has default value set" do
-        @operation.author_name.should == "Just another Ruby hacker"
+        expect(@operation.author_name).to eq("Just another Ruby hacker")
       end
     end
 
@@ -91,16 +91,16 @@ describe 'required_field_validator/string_type_value_spec' do
       end
 
       it "is valid for committing" do
-        @operation.should be_valid_for_committing
+        expect(@operation).to be_valid_for_committing
       end
 
       it "is not valid in default context" do
         # context here is :default
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
       end
 
       it "has value set" do
-        @operation.author_name.should == "Random contributor"
+        expect(@operation.author_name).to eq("Random contributor")
       end
     end
 
@@ -112,24 +112,24 @@ describe 'required_field_validator/string_type_value_spec' do
       it "is NOT valid for committing" do
         # empty string is not considered present for
         # a String value
-        @operation.should_not be_valid_for_committing
+        expect(@operation).not_to be_valid_for_committing
 
         # sanity check since this empty vs blank vs nil
         # thing is a shaky ground
         @operation.committer_name = "l33t k0dr"
-        @operation.should be_valid_for_committing
+        expect(@operation).to be_valid_for_committing
       end
 
       it "IS valid for pushing" do
-        @operation.should be_valid_for_pushing
+        expect(@operation).to be_valid_for_pushing
       end
 
       it "IS valid for pulling" do
-        @operation.should be_valid_for_pulling
+        expect(@operation).to be_valid_for_pulling
       end
 
       it "is not valid in default context" do
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
       end
     end
 
@@ -142,24 +142,24 @@ describe 'required_field_validator/string_type_value_spec' do
       it "is NOT valid for committing" do
         # empty string is not considered present for
         # a String value
-        @operation.should_not be_valid_for_committing
+        expect(@operation).not_to be_valid_for_committing
 
         # sanity check since this empty vs blank vs nil
         # thing is a shaky ground
         @operation.author_name = "l33t k0dr"
-        @operation.should be_valid_for_committing
+        expect(@operation).to be_valid_for_committing
       end
 
       it "IS valid for pushing" do
-        @operation.should be_valid_for_pushing
+        expect(@operation).to be_valid_for_pushing
       end
 
       it "IS valid for pulling" do
-        @operation.should be_valid_for_pulling
+        expect(@operation).to be_valid_for_pulling
       end
 
       it "is not valid in default context" do
-        @operation.should_not be_valid
+        expect(@operation).not_to be_valid
       end
     end
   end

@@ -14,7 +14,7 @@ describe 'Country' do
     end
 
     it "is valid" do
-      @country.should be_valid
+      expect(@country).to be_valid
     end
   end
 
@@ -25,7 +25,7 @@ describe 'Country' do
     end
 
     it "is valid" do
-      @country.should be_valid
+      expect(@country).to be_valid
     end
   end
 
@@ -36,7 +36,7 @@ describe 'Country' do
     end
 
     it "is valid" do
-      @country.should be_valid
+      expect(@country).to be_valid
     end
   end
 
@@ -47,7 +47,7 @@ describe 'Country' do
     end
 
     it "IS valid" do
-      @country.should be_valid
+      expect(@country).to be_valid
     end
   end
 
@@ -58,7 +58,7 @@ describe 'Country' do
     end
 
     it "IS NOT valid" do
-      @country.should_not be_valid
+      expect(@country).not_to be_valid
     end
   end
 
@@ -69,7 +69,7 @@ describe 'Country' do
     end
 
     it "IS NOT valid" do
-      @country.should_not be_valid
+      expect(@country).not_to be_valid
     end
   end
 
@@ -80,12 +80,12 @@ describe 'Country' do
     end
 
     it "is NOT valid" do
-      @country.should_not be_valid
+      expect(@country).not_to be_valid
     end
 
     it "has a meaningful error message on for the property" do
       @country.valid?
-      @country.errors.on(:area).should == [ 'Please use integers to specify area' ]
+      expect(@country.errors.on(:area)).to eq([ 'Please use integers to specify area' ])
     end
   end
 end

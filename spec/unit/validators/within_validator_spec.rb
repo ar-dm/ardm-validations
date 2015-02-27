@@ -18,6 +18,6 @@ describe 'DataMapper::Validations::WithinValidator' do
     validator = DataMapper::Validations::WithinValidator.new(:name, :set => types)
     validator.call(@model)
 
-    @model.errors.should_not be_empty
+    expect(@model.errors).not_to be_empty
   end
 end

@@ -33,7 +33,7 @@ describe 'A model with a :set & :default options on a property' do
     include_examples "invalid model"
 
     it "has a meaningful error message" do
-      @model.errors.on(:limited).should == [ 'Limited must be one of foo, bar, bang' ]
+      expect(@model.errors.on(:limited)).to eq([ 'Limited must be one of foo, bar, bang' ])
     end
   end
 end
