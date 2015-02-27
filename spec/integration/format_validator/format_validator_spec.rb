@@ -15,7 +15,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       @model = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.merge(:doc_no => 'BAD CODE :)'))
     end
 
-    it_should_behave_like 'invalid model'
+    include_examples 'invalid model'
 
     it "has meaningful error message on invalid field" do
       @model.errors.on(:doc_no).should == [ 'Doc no has an invalid format' ]
@@ -27,7 +27,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       @model = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.merge(:doc_no => 'A1234'))
     end
 
-    it_should_behave_like 'valid model'
+    include_examples 'valid model'
   end
 
   describe "with doc no with value of 'B123456X12'" do
@@ -35,7 +35,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       @model = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.merge(:doc_no => 'B123456X12'))
     end
 
-    it_should_behave_like 'valid model'
+    include_examples 'valid model'
   end
 
   describe "with missing url" do
@@ -43,7 +43,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       @model = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.except(:url))
     end
 
-    it_should_behave_like 'invalid model'
+    include_examples 'invalid model'
   end
 
   describe "with blank name" do
@@ -51,7 +51,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       @model = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.merge(:username => ''))
     end
 
-    it_should_behave_like 'valid model'
+    include_examples 'valid model'
   end
 
   describe "with blank email" do
@@ -59,6 +59,6 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       @model = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.merge(:email => ''))
     end
 
-    it_should_behave_like 'valid model'
+    include_examples 'valid model'
   end
 end

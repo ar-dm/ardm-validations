@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'integration/length_validator/spec_helper'
 
-describe "entity with wrong destination MAC address length", :shared => true do
+RSpec.shared_examples_for "entity with wrong destination MAC address length" do
   it "has error message with range bounds" do
     @model.errors.on(:destination_mac).should == [ 'Destination mac must be 6 characters long' ]
   end
@@ -18,7 +18,7 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
     @model.link_support_fragmentation = false
   end
 
-  it_should_behave_like "valid model"
+  include_examples "valid model"
 
   describe "with destination MAC 3 'bits' long" do
     before :all do
@@ -26,9 +26,9 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
-    it_should_behave_like "entity with wrong destination MAC address length"
+    include_examples "entity with wrong destination MAC address length"
   end
 
   describe "with destination MAC 8 'bits' long" do
@@ -37,9 +37,9 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
-    it_should_behave_like "entity with wrong destination MAC address length"
+    include_examples "entity with wrong destination MAC address length"
   end
 
   # arguable but reasonable for 80% of cases
@@ -52,9 +52,9 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
-    it_should_behave_like "entity with wrong destination MAC address length"
+    include_examples "entity with wrong destination MAC address length"
   end
 
   describe "with a 6 'bits' destination MAC address" do
@@ -63,7 +63,7 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
       @model.valid?
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "with multibyte characters" do
@@ -82,6 +82,6 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
       end
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 end

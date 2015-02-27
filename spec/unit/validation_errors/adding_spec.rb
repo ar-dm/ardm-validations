@@ -2,12 +2,12 @@
 require 'spec_helper'
 
 describe 'DataMapper::Validations::ValidationErrors' do
-  before :all do
+  before :each do
     @model = DataMapper::Validations::ValidationErrors.new(Object.new)
   end
 
   describe "after first error being added" do
-    before :all do
+    before :each do
       @model.add(:property, "can't be valid, no way")
     end
 
@@ -22,7 +22,7 @@ describe 'DataMapper::Validations::ValidationErrors' do
 
 
   describe "after second error being added" do
-    before :all do
+    before :each do
       @model.add(:property, "can't be valid, no way")
       @model.add(:property, "something else is wrong")
     end
@@ -38,7 +38,7 @@ describe 'DataMapper::Validations::ValidationErrors' do
 
 
   describe "when duplicate error being added" do
-    before :all do
+    before :each do
       @model.add(:property, "can't be valid, no way")
       @model.add(:property, "can't be valid, no way")
     end

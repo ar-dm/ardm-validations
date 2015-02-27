@@ -9,6 +9,6 @@ describe 'DataMapper::Validations::Fixtures::BoatDock' do
   end
 
   describe "with default values that are valid" do
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 end

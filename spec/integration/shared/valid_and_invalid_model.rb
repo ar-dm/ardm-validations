@@ -1,4 +1,4 @@
-describe "valid model", :shared => true do
+RSpec.shared_examples_for "valid model" do
   before do
     @model.valid?
   end
@@ -16,7 +16,7 @@ describe "valid model", :shared => true do
   end
 end
 
-describe "invalid model", :shared => true do
+RSpec.shared_examples_for "invalid model" do
   before do
     @model.valid?
   end

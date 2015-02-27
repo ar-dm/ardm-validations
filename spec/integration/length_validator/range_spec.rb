@@ -9,7 +9,7 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
     @model.link_support_fragmentation = false
   end
 
-  it_should_behave_like "valid model"
+  include_examples "valid model"
 
   describe "with payload that is 7 'bits' long (too short)" do
     before :all do
@@ -17,7 +17,7 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has error message with range bounds" do
       @model.errors.on(:payload).should == [ 'Payload must be between 46 and 1500 characters long' ]
@@ -31,7 +31,7 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has error message with range bounds" do
       @model.errors.on(:payload).should == [ 'Payload must be between 46 and 1500 characters long' ]
@@ -45,7 +45,7 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has error message with range bounds" do
       @model.errors.on(:payload).should == [ 'Payload must be between 46 and 1500 characters long' ]
@@ -63,7 +63,7 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has error message with range bounds" do
       @model.errors.on(:payload).should == [ 'Payload must be between 46 and 1500 characters long' ]
@@ -78,7 +78,7 @@ describe 'DataMapper::Validations::Fixtures::EthernetFrame' do
       @model.valid?
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
 
     it "has blank error message" do
       @model.errors.on(:payload).should be_nil

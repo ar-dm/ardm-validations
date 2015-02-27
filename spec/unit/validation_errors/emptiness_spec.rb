@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe 'DataMapper::Validations::ValidationErrors' do
-  before :all do
+  before :each do
     @model = DataMapper::Validations::ValidationErrors.new(Object.new)
   end
 
@@ -16,7 +16,7 @@ describe 'DataMapper::Validations::ValidationErrors' do
   # just keeping old spec suite bits in place
   # if they make no harm — MK
   describe "after enquiry" do
-    before :all do
+    before :each do
       @model.on(:property)
     end
 
@@ -27,7 +27,7 @@ describe 'DataMapper::Validations::ValidationErrors' do
 
 
   describe "after errors being added" do
-    before :all do
+    before :each do
       @model.add(:property, "can't be valid, no way")
     end
 

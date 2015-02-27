@@ -20,7 +20,7 @@ describe 'required_field_validator/boolean_type_value_spec' do
       before do
         @operation.name = nil
       end
-      it_should_behave_like "unnamed SCM operation"
+      include_examples "unnamed SCM operation"
     end
 
 
@@ -136,7 +136,7 @@ describe 'required_field_validator/boolean_type_value_spec' do
       before do
         @operation.name = nil
       end
-      it_should_behave_like "unnamed SCM operation"
+      include_examples "unnamed SCM operation"
     end
 
     describe "without network connection" do

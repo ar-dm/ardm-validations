@@ -29,7 +29,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
         @model = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.merge(:email => email))
       end
 
-      it_should_behave_like "valid model"
+      include_examples "valid model"
     end
   end
 
@@ -48,7 +48,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
         @model = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.merge(:email => email))
       end
 
-      it_should_behave_like "invalid model"
+      include_examples "invalid model"
     end
   end
 

@@ -6,12 +6,14 @@ describe 'DataMapper::Validations::Fixtures::MemoryObject' do
 
   before :all do
     DataMapper::Validations::Fixtures::MemoryObject.auto_migrate!
+  end
 
+  before :each do
     @model = DataMapper::Validations::Fixtures::MemoryObject.new
   end
 
   describe "with color given as a string" do
-    before :all do
+    before :each do
       @model.color = "grey"
     end
 
@@ -22,7 +24,7 @@ describe 'DataMapper::Validations::Fixtures::MemoryObject' do
 
 
   describe "with color given as an object" do
-    before :all do
+    before :each do
       # we have to go through the back door
       # since writer= method does typecasting
       # and Object is casted to String
@@ -36,7 +38,7 @@ describe 'DataMapper::Validations::Fixtures::MemoryObject' do
 
 
   describe "with mark flag set to true" do
-    before :all do
+    before :each do
       @model.marked = true
     end
 
@@ -47,7 +49,7 @@ describe 'DataMapper::Validations::Fixtures::MemoryObject' do
 
 
   describe "with mark flag set to false" do
-    before :all do
+    before :each do
       @model.marked = false
     end
 
@@ -57,7 +59,7 @@ describe 'DataMapper::Validations::Fixtures::MemoryObject' do
   end
 
   describe "with mark flag set to an object" do
-    before :all do
+    before :each do
       # go through the back door to avoid typecasting
       @model.instance_variable_set(:@marked, Object.new)
     end
@@ -69,7 +71,7 @@ describe 'DataMapper::Validations::Fixtures::MemoryObject' do
 
 
   describe "with color set to nil" do
-    before :all do
+    before :each do
       # go through the back door to avoid typecasting
       @model.color = nil
     end
@@ -81,7 +83,7 @@ describe 'DataMapper::Validations::Fixtures::MemoryObject' do
 
 
   describe "with mark flag set to nil" do
-    before :all do
+    before :each do
       @model.marked = nil
     end
 

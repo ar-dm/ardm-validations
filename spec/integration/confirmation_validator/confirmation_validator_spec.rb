@@ -1,13 +1,13 @@
 require 'spec_helper'
 require 'integration/confirmation_validator/spec_helper'
 
-describe "reservation with mismatched person name", :shared => true do
+RSpec.shared_examples_for "reservation with mismatched person name" do
   it "has meaningful error message" do
     @model.errors.on(:person_name).should == [ 'Person name does not match the confirmation' ]
   end
 end
 
-describe "reservation with mismatched seats number", :shared => true do
+RSpec.shared_examples_for "reservation with mismatched seats number" do
   it "has meaningful error message" do
     # Proc gets expanded here
     @model.errors.on(:number_of_seats).should == [ 'Reservation requires confirmation for number_of_seats' ]
@@ -16,7 +16,7 @@ end
 
 
 describe 'DataMapper::Validations::Fixtures::Reservation' do
-  before :all do
+  before :each do
     DataMapper::Validations::Fixtures::Reservation.auto_migrate!
 
     @model = DataMapper::Validations::Fixtures::Reservation.new(:person_name                  => "Tyler Durden",
@@ -27,50 +27,50 @@ describe 'DataMapper::Validations::Fixtures::Reservation' do
   end
 
   describe "with matching person name and confirmation" do
-    before :all do
+    before :each do
       @model.person_name = "mismatch"
     end
 
-    it_should_behave_like "invalid model"
-    it_should_behave_like "reservation with mismatched person name"
+    include_examples "invalid model"
+    include_examples "reservation with mismatched person name"
   end
 
 
   describe "with a blank person name and confirmation" do
-    before :all do
+    before :each do
       @model.person_name = ""
     end
 
-    it_should_behave_like "invalid model"
-    it_should_behave_like "reservation with mismatched person name"
+    include_examples "invalid model"
+    include_examples "reservation with mismatched person name"
   end
 
 
   describe "with a missing person name and confirmation" do
-    before :all do
+    before :each do
       @model.person_name = nil
     end
 
-    it_should_behave_like "invalid model"
-    it_should_behave_like "reservation with mismatched person name"
+    include_examples "invalid model"
+    include_examples "reservation with mismatched person name"
   end
 
 
   describe "with mismatching number of seats and confirmation" do
-    before :all do
+    before :each do
       @model.number_of_seats  = -1
     end
 
-    it_should_behave_like "invalid model"
-    it_should_behave_like "reservation with mismatched seats number"
+    include_examples "invalid model"
+    include_examples "reservation with mismatched seats number"
   end
 
 
   describe "with a blank number of seats and confirmation" do
-    before :all do
+    before :each do
       @model.number_of_seats = nil
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 end

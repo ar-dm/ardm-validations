@@ -9,7 +9,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballCourt' do
     @model.valid?
   end
 
-  it_should_behave_like "valid model"
+  include_examples "valid model"
 
 
   describe "with three point line distance of 6.8" do
@@ -18,7 +18,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballCourt' do
       @model.valid?
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
 
@@ -28,7 +28,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballCourt' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has a meaningful error message" do
       @model.errors.on(:three_point_line_distance).should == [ 'Three point line distance must be less than 7.24' ]

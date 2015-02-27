@@ -16,7 +16,7 @@ describe 'uniqueness_validator/uniqueness_validator_spec' do
         @model = DataMapper::Validations::Fixtures::Department.new(:name => "R & D")
       end
 
-      it_should_behave_like "valid model"
+      include_examples "valid model"
     end
 
     describe "with a duplicate name" do
@@ -24,7 +24,7 @@ describe 'uniqueness_validator/uniqueness_validator_spec' do
         @model = DataMapper::Validations::Fixtures::Department.new(:name => "HR")
       end
 
-      it_should_behave_like "invalid model"
+      include_examples "invalid model"
     end
   end
 
@@ -42,7 +42,7 @@ describe 'uniqueness_validator/uniqueness_validator_spec' do
         @model.domain = nil
       end
 
-      it_should_behave_like "valid model"
+      include_examples "valid model"
     end
 
     describe "with a duplicate domain" do
@@ -50,7 +50,7 @@ describe 'uniqueness_validator/uniqueness_validator_spec' do
         @model = DataMapper::Validations::Fixtures::Organisation.new(:name => 'Fake Apple', :domain => 'apple.com')
       end
 
-      it_should_behave_like "invalid model"
+      include_examples "invalid model"
 
       it "has a meaningful error message" do
         @model.valid?

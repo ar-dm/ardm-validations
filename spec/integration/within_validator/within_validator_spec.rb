@@ -4,44 +4,46 @@ require 'integration/within_validator/spec_helper'
 describe 'DataMapper::Validations::Fixtures::PhoneNumber' do
   before :all do
     DataMapper::Validations::Fixtures::PhoneNumber.auto_migrate!
+  end
 
+  before :each do
     @model = DataMapper::Validations::Fixtures::PhoneNumber.new(:type_of_number => 'cell')
     @model.should be_valid
   end
 
   describe "with type of number set to 'home'" do
-    before :all do
+    before :each do
       @model.type_of_number = 'home'
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
 
   describe "with type of number set to 'cell'" do
-    before :all do
+    before :each do
       @model.type_of_number = 'cell'
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
 
   describe "with type of number set to 'work'" do
-    before :all do
+    before :each do
       @model.type_of_number = 'home'
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
 
   describe "with type of number set to 'fax'" do
-    before :all do
+    before :each do
       @model.type_of_number = 'fax'
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has meaningful error message on invalid property" do
       @model.errors.on(:type_of_number).should == [ 'Should be one of: home, cell or work' ]
@@ -52,7 +54,7 @@ end
 
 
 describe 'DataMapper::Validations::Fixtures::MathematicalFunction' do
-  before :all do
+  before :each do
     DataMapper::Validations::Fixtures::MathematicalFunction.auto_migrate!
 
     @model = DataMapper::Validations::Fixtures::MathematicalFunction.new(:input => 2, :output => -2)
@@ -60,11 +62,11 @@ describe 'DataMapper::Validations::Fixtures::MathematicalFunction' do
   end
 
   describe "with input = 0" do
-    before :all do
+    before :each do
       @model.input = 0
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "notices 'greater than or equal to 1' in the error message" do
       @model.errors.on(:input).should == [ 'Input must be greater than or equal to 1' ]
@@ -72,11 +74,11 @@ describe 'DataMapper::Validations::Fixtures::MathematicalFunction' do
   end
 
   describe "with input = -10" do
-    before :all do
+    before :each do
       @model.input = -10
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "notices 'greater than or equal to 1' in the error message" do
       @model.errors.on(:input).should == [ 'Input must be greater than or equal to 1' ]
@@ -84,11 +86,11 @@ describe 'DataMapper::Validations::Fixtures::MathematicalFunction' do
   end
 
   describe "with input = -Infinity" do
-    before :all do
+    before :each do
       @model.input = -(1.0/0)
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "notices 'greater than or equal to 1' in the error message" do
       @model.errors.on(:input).should == [ 'Input must be greater than or equal to 1' ]
@@ -96,20 +98,20 @@ describe 'DataMapper::Validations::Fixtures::MathematicalFunction' do
   end
 
   describe "with input = 10" do
-    before :all do
+    before :each do
       @model.input = 10
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
 
   describe "with input = Infinity" do
-    before :all do
+    before :each do
       @model.input = (1.0/0)
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
 
@@ -118,35 +120,35 @@ describe 'DataMapper::Validations::Fixtures::MathematicalFunction' do
   #
 
   describe "with output = 0" do
-    before :all do
+    before :each do
       @model.output = 0
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "with output = -10" do
-    before :all do
+    before :each do
       @model.output = -10
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "with output = -Infinity" do
-    before :all do
+    before :each do
       @model.output = -(1.0/0)
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "with output = 10" do
-    before :all do
+    before :each do
       @model.output = 10
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "uses overriden error message" do
       @model.errors.on(:output).should == [ 'Negative values or zero only, please' ]
@@ -155,11 +157,11 @@ describe 'DataMapper::Validations::Fixtures::MathematicalFunction' do
 
 
   describe "with output = Infinity" do
-    before :all do
+    before :each do
       @model.output = (1.0/0)
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "uses overriden error message" do
       @model.errors.on(:output).should == [ 'Negative values or zero only, please' ]

@@ -40,7 +40,7 @@ describe 'SailBoat' do
     end
 
     # validates_length_of is inferred from property's :length option
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "with 2 character long note" do
@@ -92,7 +92,7 @@ describe 'DataMapper::Validations::Fixtures::SmsMessage' do
       @model.body = "ab"
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "with 10 character long note" do
@@ -100,7 +100,7 @@ describe 'DataMapper::Validations::Fixtures::SmsMessage' do
       @model.body = "ABCDEFGHIJ"
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "with 499 character long note" do
@@ -108,7 +108,7 @@ describe 'DataMapper::Validations::Fixtures::SmsMessage' do
       @model.body = "a" * 499
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "with 503 character long note" do
@@ -116,7 +116,7 @@ describe 'DataMapper::Validations::Fixtures::SmsMessage' do
       @model.body = "a" * 503
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has a meaningful error message" do
       @model.errors.on(:body).should == [ 'Body must be between 1 and 500 characters long' ]

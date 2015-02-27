@@ -12,7 +12,7 @@ describe 'DataMapper::Validations::Fixtures::G3Concert' do
       @model.year = 2015
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "uses error messages returned by the validation block" do
       @model.errors.on(:participants).should == [ 'this G3 is probably yet to take place' ]
@@ -27,7 +27,7 @@ describe 'DataMapper::Validations::Fixtures::G3Concert' do
       @model.participants = "Joe Satriani, Steve Vai, John Petrucci"
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "planned concert for non-existing year/participants/city combinations" do
@@ -36,6 +36,6 @@ describe 'DataMapper::Validations::Fixtures::G3Concert' do
       @model.year         = 2021
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 end

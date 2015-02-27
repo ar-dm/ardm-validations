@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'integration/length_validator/spec_helper'
 
-describe "entity with a name shorter than 2 characters", :shared => true do
+RSpec.shared_examples_for "entity with a name shorter than 2 characters" do
   it "has a meaninful error message with length restrictions mentioned" do
     @model.errors.on(:name).should == [ 'Name must be at least 2 characters long' ]
   end
@@ -14,10 +14,10 @@ describe 'DataMapper::Validations::Fixtures::Mittelschnauzer' do
     @model = DataMapper::Validations::Fixtures::Mittelschnauzer.valid_instance
   end
 
-  it_should_behave_like "valid model"
+  include_examples "valid model"
 
   describe "with a 13 characters long name" do
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "with a single character name" do
@@ -26,9 +26,9 @@ describe 'DataMapper::Validations::Fixtures::Mittelschnauzer' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
-    it_should_behave_like "entity with a name shorter than 2 characters"
+    include_examples "entity with a name shorter than 2 characters"
   end
 
   describe "with blank name" do
@@ -37,9 +37,9 @@ describe 'DataMapper::Validations::Fixtures::Mittelschnauzer' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
-    it_should_behave_like "entity with a name shorter than 2 characters"
+    include_examples "entity with a name shorter than 2 characters"
   end
 
   describe "persisted, with a single character owner" do
@@ -49,6 +49,6 @@ describe 'DataMapper::Validations::Fixtures::Mittelschnauzer' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
   end
 end

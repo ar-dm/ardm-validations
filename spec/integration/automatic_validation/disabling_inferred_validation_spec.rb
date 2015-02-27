@@ -19,7 +19,7 @@ describe "A class with inferred validations disabled for all properties with an 
   end
 
   describe "when instantiated w/o any attributes" do
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 end
 
@@ -44,6 +44,6 @@ describe "A class with inferred validations disabled for all properties with a b
   end
 
   describe "when instantiated w/o any attributes" do
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 end

@@ -22,7 +22,7 @@ describe 'A model with a :set & :default options on a property' do
     end
 
     # default value is respected
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "without value on that property that is not in allowed range/set" do
@@ -30,7 +30,7 @@ describe 'A model with a :set & :default options on a property' do
       @model = LimitedBoat.new(:limited => "blah")
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has a meaningful error message" do
       @model.errors.on(:limited).should == [ 'Limited must be one of foo, bar, bang' ]

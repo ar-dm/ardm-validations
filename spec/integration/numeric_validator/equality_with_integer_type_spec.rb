@@ -12,7 +12,7 @@ describe 'DataMapper::Validations::Fixtures::LerneanHydra' do
       @model.valid?
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
 
@@ -22,7 +22,7 @@ describe 'DataMapper::Validations::Fixtures::LerneanHydra' do
       @model.valid?
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
 
@@ -32,7 +32,7 @@ describe 'DataMapper::Validations::Fixtures::LerneanHydra' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has a meaningful error message" do
       @model.errors.on(:head_count).should == [ 'Lernean hydra is said to have exactly 9 heads' ]

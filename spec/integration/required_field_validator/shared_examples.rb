@@ -5,7 +5,7 @@ describe 'GitOperation' do
     @operation = GitOperation.new
   end
 
-  describe "unnamed SCM operation", :shared => true do
+  RSpec.shared_examples_for "unnamed SCM operation" do
     before do
       @operation.name = nil
       @operation.valid?

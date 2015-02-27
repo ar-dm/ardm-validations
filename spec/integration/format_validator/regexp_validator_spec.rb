@@ -15,7 +15,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       @model = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.merge(:code => '123456'))
     end
 
-    it_should_behave_like 'valid model'
+    include_examples 'valid model'
   end
 
 
@@ -24,7 +24,7 @@ describe 'DataMapper::Validations::Fixtures::BillOfLading' do
       @model = DataMapper::Validations::Fixtures::BillOfLading.new(valid_attributes.merge(:code => '12'))
     end
 
-    it_should_behave_like 'invalid model'
+    include_examples 'invalid model'
 
     it "has a meaningful error message" do
       @model.errors.on(:code).should  == [ 'Code format is invalid' ]

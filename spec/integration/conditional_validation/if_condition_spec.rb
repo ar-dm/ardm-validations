@@ -18,7 +18,7 @@ describe 'DataMapper::Validations::Fixtures::UDPPacket' do
         @model.checksum = nil
       end
 
-      it_should_behave_like "valid model"
+      include_examples "valid model"
     end
 
     describe "and has no checksum algorithm" do
@@ -26,7 +26,7 @@ describe 'DataMapper::Validations::Fixtures::UDPPacket' do
         @model.checksum_algorithm = nil
       end
 
-      it_should_behave_like "valid model"
+      include_examples "valid model"
     end
   end
 
@@ -41,7 +41,7 @@ describe 'DataMapper::Validations::Fixtures::UDPPacket' do
         @model.checksum = nil
       end
 
-      it_should_behave_like "invalid model"
+      include_examples "invalid model"
 
       it "has a meaningful error message" do
         @model.errors.on(:checksum).should == [ 'Checksum is mandatory when used with IPv6' ]
@@ -53,7 +53,7 @@ describe 'DataMapper::Validations::Fixtures::UDPPacket' do
         @model.checksum_algorithm = nil
       end
 
-      it_should_behave_like "invalid model"
+      include_examples "invalid model"
 
       it "has a meaningful error message" do
         @model.errors.on(:checksum_algorithm).should == [ 'Checksum is mandatory when used with IPv6' ]

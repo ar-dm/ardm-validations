@@ -14,7 +14,7 @@ describe "A model with an Integer property" do
       @model.id = 1
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "assigned a value coercible into an integer" do
@@ -22,7 +22,7 @@ describe "A model with an Integer property" do
       @model.id = 1.0
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "assigned a value not coercible into an integer" do

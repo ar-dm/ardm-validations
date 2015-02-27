@@ -22,14 +22,14 @@ describe 'DataMapper::Validations::ValidationErrors' do
         @errors   = DataMapper::Validations::ValidationErrors.new(Object.new)
         @property = 'name'
       end
-      it_should_behave_like 'a validation error reader'
+      include_examples 'a validation error reader'
     end
     describe 'when passing the argument as a Symbol' do
       before(:each) do
         @errors   = DataMapper::Validations::ValidationErrors.new(Object.new)
         @property = :name
       end
-      it_should_behave_like 'a validation error reader'
+      include_examples 'a validation error reader'
     end
   end
 end

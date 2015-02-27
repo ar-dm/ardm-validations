@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'integration/method_validator/spec_helper'
 
-describe "a good fit for DSLs", :shared => true do
+RSpec.shared_examples_for "a good fit for DSLs" do
   it "is a good fit for DSLs" do
     @model.should be_valid_for_implementing_a_dsl
   end
@@ -11,7 +11,7 @@ describe "a good fit for DSLs", :shared => true do
   end
 end
 
-describe "a poor candidate for DSLs", :shared => true do
+RSpec.shared_examples_for "a poor candidate for DSLs" do
   it "is a poor candidate for DSLs" do
     @model.should_not be_valid_for_implementing_a_dsl
   end
@@ -26,7 +26,7 @@ describe "a poor candidate for DSLs", :shared => true do
 end
 
 
-describe "a good fit for game engine core", :shared => true do
+RSpec.shared_examples_for "a good fit for game engine core" do
   it "is a good fit for game engine core" do
     @model.should be_valid_for_implementing_a_game_engine_core
   end
@@ -36,7 +36,7 @@ describe "a good fit for game engine core", :shared => true do
   end
 end
 
-describe "a poor candidate for game engine core", :shared => true do
+RSpec.shared_examples_for "a poor candidate for game engine core" do
   it "is a poor candidate for game engine core" do
     @model.should_not be_valid_for_implementing_a_game_engine_core
   end
@@ -44,7 +44,7 @@ end
 
 
 
-describe "a good fit for kernel hacking", :shared => true do
+RSpec.shared_examples_for "a good fit for kernel hacking" do
   it "is a good fit for kernel hacking" do
     @model.should be_valid_for_hacking_on_the_kernel
   end
@@ -55,7 +55,7 @@ describe "a good fit for kernel hacking", :shared => true do
 end
 
 
-describe "a poor candidate for kernel hacking", :shared => true do
+RSpec.shared_examples_for "a poor candidate for kernel hacking" do
   it "is not a good fit for kernel hacking" do
     @model.should_not be_valid_for_hacking_on_the_kernel
   end
@@ -87,11 +87,11 @@ describe "C" do
                                                                        )
   end
 
-  it_should_behave_like "a good fit for kernel hacking"
+  include_examples "a good fit for kernel hacking"
 
-  it_should_behave_like "a good fit for game engine core"
+  include_examples "a good fit for game engine core"
 
-  it_should_behave_like "a poor candidate for DSLs"
+  include_examples "a poor candidate for DSLs"
 end
 
 
@@ -110,11 +110,11 @@ describe "C++" do
                                                                        )
   end
 
-  it_should_behave_like "a poor candidate for kernel hacking"
+  include_examples "a poor candidate for kernel hacking"
 
-  it_should_behave_like "a good fit for game engine core"
+  include_examples "a good fit for game engine core"
 
-  it_should_behave_like "a poor candidate for DSLs"
+  include_examples "a poor candidate for DSLs"
 
   it "is not approved by Linus" do
     @model.valid?(:hacking_on_the_kernel)
@@ -138,11 +138,11 @@ describe "Ruby" do
                                                                        )
   end
 
-  it_should_behave_like "a good fit for DSLs"
+  include_examples "a good fit for DSLs"
 
-  it_should_behave_like "a poor candidate for kernel hacking"
+  include_examples "a poor candidate for kernel hacking"
 
-  it_should_behave_like "a poor candidate for game engine core"
+  include_examples "a poor candidate for game engine core"
 
   it "has a (more or less) meaningful error message" do
     @model.valid?(:doing_system_programming)
@@ -165,11 +165,11 @@ describe "Scala" do
                                                                        )
   end
 
-  it_should_behave_like "a good fit for DSLs"
+  include_examples "a good fit for DSLs"
 
-  it_should_behave_like "a poor candidate for kernel hacking"
+  include_examples "a poor candidate for kernel hacking"
 
-  it_should_behave_like "a poor candidate for game engine core"
+  include_examples "a poor candidate for game engine core"
 
   it "has a (more or less) meaningful error message" do
     @model.valid?(:doing_system_programming)
@@ -197,11 +197,11 @@ describe "Haskell" do
                                                                        )
   end
 
-  it_should_behave_like "a good fit for DSLs"
+  include_examples "a good fit for DSLs"
 
-  it_should_behave_like "a poor candidate for kernel hacking"
+  include_examples "a poor candidate for kernel hacking"
 
-  it_should_behave_like "a poor candidate for game engine core"
+  include_examples "a poor candidate for game engine core"
 
   it "has a (more or less) meaningful error message" do
     @model.valid?(:doing_system_programming)
@@ -223,7 +223,7 @@ describe 'DataMapper::Validations::Fixtures::Event' do
       @model.ends_at   = DateTime.new(2009, 4, 1, 23, 59, 59)
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
   describe "with start time after end time" do
@@ -232,7 +232,7 @@ describe 'DataMapper::Validations::Fixtures::Event' do
       @model.ends_at   = DateTime.new(2009, 4, 1, 00, 00, 01)
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "uses custom error message for property starts_at" do
       @model.errors.on(:starts_at).should == [ 'Start time cannot be after end time' ]

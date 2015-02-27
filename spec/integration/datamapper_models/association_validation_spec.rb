@@ -20,7 +20,7 @@ describe 'DataMapper::Validations::Fixtures::Product' do
       @model.company = nil
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has a meaningful error message" do
       @model.errors.on(:company).should == [ 'Company must not be blank' ]

@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe 'DataMapper::Validations::ValidationErrors' do
-  before :all do
+  before :each do
     @model = DataMapper::Validations::ValidationErrors.new(Object.new)
     @model.add(:ip_address, "must have valid format")
     @model.add(:full_name, "can't be blank")
@@ -21,7 +21,7 @@ describe 'DataMapper::Validations::ValidationErrors' do
 
 
   describe "#map" do
-    before :all do
+    before :each do
       @model.add(:ip_address, "must belong to a local subnet")
     end
     it "maps error message arrays using provided block" do

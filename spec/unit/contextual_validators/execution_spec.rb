@@ -3,7 +3,7 @@ require 'spec_helper'
 require 'unit/contextual_validators/spec_helper'
 
 describe 'DataMapper::Validations::ContextualValidators' do
-  before :all do
+  before :each do
     @validators = DataMapper::Validations::ContextualValidators.new
   end
 

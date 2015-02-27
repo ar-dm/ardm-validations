@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'DataMapper::Resource' do
-  before :all do
+  before :each do
     DataMapper::Validations::Fixtures::Barcode.destroy!
 
     @resource = DataMapper::Validations::Fixtures::Barcode.new
@@ -9,7 +9,7 @@ describe 'DataMapper::Resource' do
 
   describe '#update' do
     describe 'when provided valid attributes' do
-      before :all do
+      before :each do
         @response = @resource.update(:code => 'a' * 10)
       end
 
@@ -19,7 +19,7 @@ describe 'DataMapper::Resource' do
     end
 
     describe 'when provided invalid attributes' do
-      before :all do
+      before :each do
         @response = @resource.update(:code => 'a' * 11)
       end
 
@@ -33,7 +33,7 @@ describe 'DataMapper::Resource' do
     end
 
     describe 'when provided invalid attributes and a context' do
-      before :all do
+      before :each do
         DataMapper::Validations::Fixtures::Organisation.destroy!
         DataMapper::Validations::Fixtures::Department.destroy!
         DataMapper::Validations::Fixtures::User.destroy!
@@ -66,7 +66,7 @@ describe 'DataMapper::Resource' do
   end
 
   describe '#save' do
-    before :all do
+    before :each do
       @resource.code = 'a' * 10
       @resource.save
     end
@@ -78,7 +78,7 @@ describe 'DataMapper::Resource' do
     end
 
     describe 'on a saved, non-dirty resource' do
-      before :all do
+      before :each do
         # reload the resource
         @resource = @resource.model.get(*@resource.key)
         @resource.save
@@ -90,7 +90,7 @@ describe 'DataMapper::Resource' do
     end
 
     describe 'on a saved, dirty resource' do
-      before :all do
+      before :each do
         # reload the resource
         @resource = @resource.model.get(*@resource.key)
         @resource.code = 'b' * 10

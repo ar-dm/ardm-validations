@@ -44,7 +44,7 @@ describe 'PureRubyObjects::Country' do
       @model.name = nil
     end
 
-    it_should_behave_like "object invalid in default context"
+    include_examples "object invalid in default context"
 
     it "is not valid in encyclopedia context" do
       @model.should_not be_valid(:adding_to_encyclopedia)
@@ -59,7 +59,7 @@ describe 'PureRubyObjects::Country' do
       @model.population = nil
     end
 
-    it_should_behave_like "object invalid in default context"
+    include_examples "object invalid in default context"
 
     it "is not valid in encyclopedia context" do
       @model.should_not be_valid(:adding_to_encyclopedia)
@@ -79,7 +79,7 @@ describe 'PureRubyObjects::Country' do
       @model.population = nil
     end
 
-    it_should_behave_like "object valid in default context"
+    include_examples "object valid in default context"
 
     it "is not valid in encyclopedia context" do
       @model.should_not be_valid(:adding_to_encyclopedia)
@@ -89,7 +89,7 @@ describe 'PureRubyObjects::Country' do
 
 
   describe "with name and population information" do
-    it_should_behave_like "object valid in default context"
+    include_examples "object valid in default context"
 
     it "is valid in encyclopedia context" do
       @model.should be_valid(:adding_to_encyclopedia)
@@ -104,7 +104,7 @@ describe 'PureRubyObjects::Country' do
       @model.valid?
     end
 
-    it_should_behave_like "object invalid in default context"
+    include_examples "object invalid in default context"
 
     it "has errors on name" do
       @model.errors.on(:name).should_not be_empty

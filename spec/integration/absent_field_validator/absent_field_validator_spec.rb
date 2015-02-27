@@ -2,15 +2,17 @@ require 'spec_helper'
 require 'integration/absent_field_validator/spec_helper'
 
 describe 'DataMapper::Validations::Fixtures::Kayak' do
-  before :all do
+  before :each do
     DataMapper::Validations::Fixtures::Kayak.auto_migrate!
+  end
 
+  before :each do
     @kayak = DataMapper::Validations::Fixtures::Kayak.new
     @kayak.should be_valid_for_sale
   end
 
   describe "with salesman being non blank" do
-    before :all do
+    before :each do
       @kayak.salesman = 'Joe'
     end
 
@@ -25,7 +27,7 @@ describe 'DataMapper::Validations::Fixtures::Kayak' do
 
 
   describe "with salesman being nil" do
-    before :all do
+    before :each do
       @kayak.salesman = nil
     end
 
@@ -40,7 +42,7 @@ describe 'DataMapper::Validations::Fixtures::Kayak' do
 
 
   describe "with salesman being an empty string" do
-    before :all do
+    before :each do
       @kayak.salesman = ''
     end
 
@@ -55,7 +57,7 @@ describe 'DataMapper::Validations::Fixtures::Kayak' do
 
 
   describe "with salesman being a string of white spaces" do
-    before :all do
+    before :each do
       @kayak.salesman = '    '
     end
 
@@ -71,9 +73,11 @@ end
 
 
 describe 'DataMapper::Validations::Fixtures::Pirogue' do
-  before :all do
+  before :each do
     DataMapper::Validations::Fixtures::Pirogue.auto_migrate!
+  end
 
+  before :each do
     @kayak = DataMapper::Validations::Fixtures::Pirogue.new
     @kayak.should_not be_valid_for_sale
   end

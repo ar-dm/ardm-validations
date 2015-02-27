@@ -9,7 +9,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballCourt' do
     @model.valid?
   end
 
-  it_should_behave_like "valid model"
+  include_examples "valid model"
 
 
   describe "with length of 15.24" do
@@ -18,7 +18,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballCourt' do
       @model.valid?
     end
 
-    it_should_behave_like "valid model"
+    include_examples "valid model"
   end
 
 
@@ -28,7 +28,7 @@ describe 'DataMapper::Validations::Fixtures::BasketballCourt' do
       @model.valid?
     end
 
-    it_should_behave_like "invalid model"
+    include_examples "invalid model"
 
     it "has a meaningful error message" do
       @model.errors.on(:length).should == [ 'Length must be less than or equal to 15.24' ]
